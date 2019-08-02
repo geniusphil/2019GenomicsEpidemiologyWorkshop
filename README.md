@@ -1,2 +1,2 @@
-# 2019GenomicEpidemiologyWorkshop
-2019 Genomic Epidemiology Workshop at Academia Sinica
+# 2019 Genomics Epidemiology Workshop
+2019 Genomics Epidemiology Workshop at Academia Sinica
