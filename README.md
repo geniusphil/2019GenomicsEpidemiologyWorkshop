@@ -38,21 +38,24 @@ NOTICE: Finished writing 3105 SNP genotypes (2069 transitions and 1036 transvers
 ### Run Annovar table function
 
 * script
+* 
 ```bash
-$ perl annovar.pl -i HG00403.chr20.gatk.avinput -r hg38 -o HG00403.chr20.gatk
+$ perl annovar.pl -t 10 -i HG00403.chr20.gatk.avinput -r hg38 -o HG00403.chr20.gatk
 ```
+
 * tab output
 ```bash
-$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring NA
+$ table_annovar.pl HG00403.chr20.gatk.avinput $HOME/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic89_coding,cosmic89_noncoding,clinvar_20190305,gnomad_genome,gnomad211_exome,exac03,intervar_20180118,dbnsfp31a_interpro -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring NA
 ```
+
 * csv output
 ```bash
-$ table_annovar.pl HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic85_coding,clinvar_20180603,gnomad_genome,exac03,intervar_20180118,dbnsfp31a_interpro, -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring . -csvout
+$ table_annovar.pl HG00403.chr20.gatk.avinput $HOME/humandb/ -buildver hg38 -out HG00403.chr20.gatk -remove -protocol refGene,ensGene,cytoBand,genomicSuperDups,gwasCatalog,avsnp150,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_amr,1000g2015aug_eur,1000g2015aug_eas,1000g2015aug_sas,nci60,cosmic89_coding,cosmic89_noncoding,clinvar_20190305,gnomad211_genome,gnomad211_exome,exac03,intervar_20180118,dbnsfp31a_interpro, -operation g,g,r,r,r,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f -otherinfo -nastring . -csvout
 ```
 
 ### Easy Run Annovar talbe function
 ```bash
-$ perl annovar.pl -i demo_sample.avinput -r hg19 -o demo_sample
+$ perl annovar.pl -t 10 -i demo_sample.avinput -r hg19 -o demo_sample
 ```
 
 * **Gene-based (g)**
@@ -73,10 +76,11 @@ $ perl annovar.pl -i demo_sample.avinput -r hg19 -o demo_sample
     * 1000g2015aug_eur
     * 1000g2015aug_eas
     * 1000g2015aug_sas
-    * gnomAD genome
+    * gnomad211_genome
+    * gnomad211_exome
     * nci60
     * cosmic85
-    * clinvar_20180603
+    * clinvar_20190305
     * exac03
     * intervar_20180118
     * dbnsfp31a_interpro
@@ -87,420 +91,913 @@ $ perl annovar.pl -i demo_sample.avinput -r hg19 -o demo_sample
 -----------------------------------------------------------------
 NOTICE: Processing operation=g protocol=refGene
 
-NOTICE: Running with system command <annotate_variation.pl -geneanno -buildver hg38 -dbtype refGene -outfile HG00403.chr20.gatk.refGene -exonsort HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running with system command <annotate_variation.pl -geneanno -buildver hg38 -dbtype refGene -outfile HG00403.chr20.gatk.refGene -exonsort HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Output files were written to HG00403.chr20.gatk.refGene.variant_function, HG00403.chr20.gatk.refGene.exonic_variant_function
 NOTICE: the queryfile contains 3443 lines
 NOTICE: threading is disabled for gene-based annotation on file with less than 1000000 input lines
-NOTICE: Reading gene annotation from /home/workshop/ngs_tools/annovar/humandb/hg38_refGene.txt ... Done with 71041 transcripts (including 17412 without coding sequence annotation) for 27813 unique genes
+NOTICE: Reading gene annotation from /home/philippe/humandb/hg38_refGene.txt ... Done with 71041 transcripts (including 17412 without coding sequence annotation) for 27813 unique genes
 NOTICE: Processing next batch with 3443 unique variants in 3443 input lines
-NOTICE: Reading FASTA sequences from /home/workshop/ngs_tools/annovar/humandb/hg38_refGeneMrna.fa ... Done with 7 sequences
+NOTICE: Reading FASTA sequences from /home/philippe/humandb/hg38_refGeneMrna.fa ... Done with 7 sequences
 WARNING: A total of 515 sequences will be ignored due to lack of correct ORF annotation
 -----------------------------------------------------------------
 NOTICE: Processing operation=g protocol=ensGene
 
-NOTICE: Running with system command <annotate_variation.pl -geneanno -buildver hg38 -dbtype ensGene -outfile HG00403.chr20.gatk.ensGene -exonsort HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running with system command <annotate_variation.pl -geneanno -buildver hg38 -dbtype ensGene -outfile HG00403.chr20.gatk.ensGene -exonsort HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Output files were written to HG00403.chr20.gatk.ensGene.variant_function, HG00403.chr20.gatk.ensGene.exonic_variant_function
 NOTICE: the queryfile contains 3443 lines
 NOTICE: threading is disabled for gene-based annotation on file with less than 1000000 input lines
-NOTICE: Reading gene annotation from /home/workshop/ngs_tools/annovar/humandb/hg38_ensGene.txt ... Done with 89732 transcripts (including 28806 without coding sequence annotation) for 42087 unique genes
+NOTICE: Reading gene annotation from /home/philippe/humandb/hg38_ensGene.txt ... Done with 89732 transcripts (including 28806 without coding sequence annotation) for 42087 unique genes
 NOTICE: Processing next batch with 3443 unique variants in 3443 input lines
-NOTICE: Reading FASTA sequences from /home/workshop/ngs_tools/annovar/humandb/hg38_ensGeneMrna.fa ... Done with 13 sequences
+NOTICE: Reading FASTA sequences from /home/philippe/humandb/hg38_ensGeneMrna.fa ... Done with 13 sequences
 WARNING: A total of 361 sequences will be ignored due to lack of correct ORF annotation
 -----------------------------------------------------------------
 NOTICE: Processing operation=r protocol=cytoBand
 
-NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype cytoBand -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype cytoBand -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Output file is written to HG00403.chr20.gatk.hg38_cytoBand
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_cytoBand.txt ... Done with 1293 regions
-NOTICE: Finished region-based annotation on 860 genetic variants
-NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 338 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_cytoBand.txt ... Done with 1433 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
 -----------------------------------------------------------------
 NOTICE: Processing operation=r protocol=genomicSuperDups
 
-NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype genomicSuperDups -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype genomicSuperDups -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Output file is written to HG00403.chr20.gatk.hg38_genomicSuperDups
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
-NOTICE: Finished region-based annotation on 860 genetic variants
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 338 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_genomicSuperDups.txt ... Done with 69894 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
 -----------------------------------------------------------------
 NOTICE: Processing operation=r protocol=gwasCatalog
 
-NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype gwasCatalog -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running with system command <annotate_variation.pl -regionanno -dbtype gwasCatalog -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Output file is written to HG00403.chr20.gatk.hg38_gwasCatalog
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Finished region-based annotation on 861 genetic variants
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
-NOTICE: Reading annotation database /home/workshop/ngs_tools/annovar/humandb/hg38_gwasCatalog.txt ... Done with 84414 regions
-NOTICE: Finished region-based annotation on 860 genetic variants
-NOTICE: Finished region-based annotation on 861 genetic variants
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Finished region-based annotation on 338 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Finished region-based annotation on 345 genetic variants
+NOTICE: Reading annotation database /home/philippe/humandb/hg38_gwasCatalog.txt ... Done with 152384 regions
+NOTICE: Finished region-based annotation on 345 genetic variants
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=avsnp150
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype avsnp150 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype avsnp150 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_avsnp150_dropped, other variants are written to HG00403.chr20.gatk.hg38_avsnp150_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 789
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 766
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 753
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 777
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_avsnp150.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 310
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 313
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 300
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 310
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 321
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 318
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 297
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 315
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 297
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28304406 and the number of bins to be scanned is 303
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_avsnp150.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=esp6500siv2_all
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype esp6500siv2_all -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype esp6500siv2_all -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: the --dbtype esp6500siv2_all is assumed to be in generic ANNOVAR database format
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_esp6500siv2_all_dropped, other variants are written to HG00403.chr20.gatk.hg38_esp6500siv2_all_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 3
 NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 1
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
-NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 6
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
-NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 19
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
-NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 9
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 5
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 7
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 12
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 4
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
+NOTICE: Database index loaded. Total number of bins is 683825 and the number of bins to be scanned is 2
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_esp6500siv2_all.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_all
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_all -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_all -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_ALL.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_ALL.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 498
-NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 492
-NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 503
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 516
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 178
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 222
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 174
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 199
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 188
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 201
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 236
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 195
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 210
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2821635 and the number of bins to be scanned is 208
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_ALL.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_afr
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_afr -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_afr -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_AFR.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_AFR.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 491
-NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 503
-NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 497
-NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 516
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 178
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 201
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 195
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 222
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 187
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 236
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 210
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 207
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 199
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2817370 and the number of bins to be scanned is 174
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AFR.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_amr
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_amr -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_amr -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_AMR.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_AMR.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 497
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 503
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 490
-NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 516
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 177
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 222
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 201
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 199
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 187
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 195
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 210
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 207
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 236
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2812567 and the number of bins to be scanned is 174
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_AMR.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_eur
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_eur -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_eur -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_EUR.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_EUR.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 516
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 498
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 503
-NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 492
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 178
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 188
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 195
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 201
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 199
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 210
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 236
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 222
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 208
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2809469 and the number of bins to be scanned is 174
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EUR.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_eas
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_eas -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_eas -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_EAS.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_EAS.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 516
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 503
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 497
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 491
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 201
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 210
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 174
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 222
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 187
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 199
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 178
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 236
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 207
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2810247 and the number of bins to be scanned is 195
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_EAS.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=1000g2015aug_sas
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_sas -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype 1000g2015aug_sas -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_SAS.sites.2015_08_dropped, other variants are written to HG00403.chr20.gatk.hg38_SAS.sites.2015_08_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 516
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 491
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 503
-NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 496
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 174
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 207
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 222
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 186
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 178
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 195
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 210
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 199
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 201
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
+NOTICE: Database index loaded. Total number of bins is 2813352 and the number of bins to be scanned is 236
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_SAS.sites.2015_08.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=nci60
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype nci60 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype nci60 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
 NOTICE: the --dbtype nci60 is assumed to be in generic ANNOVAR database format
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_nci60_dropped, other variants are written to HG00403.chr20.gatk.hg38_nci60_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 24
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
 NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 1
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
-NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 14
-NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 13
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_nci60.txt...Done
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 2
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 17
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 5
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 2
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 2
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 12
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 11
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
+NOTICE: Database index loaded. Total number of bins is 81459 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_nci60.txt...Done
 -----------------------------------------------------------------
-NOTICE: Processing operation=f protocol=cosmic85_coding
+NOTICE: Processing operation=f protocol=cosmic89_coding
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype cosmic85_coding -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4>
-NOTICE: the --dbtype cosmic85_coding is assumed to be in generic ANNOVAR database format
-NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_cosmic85_coding_dropped, other variants are written to HG00403.chr20.gatk.hg38_cosmic85_coding_filtered
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype cosmic89_coding -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
+NOTICE: the --dbtype cosmic89_coding is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_cosmic89_coding_dropped, other variants are written to HG00403.chr20.gatk.hg38_cosmic89_coding_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_cosmic85_coding.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_cosmic85_coding.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_cosmic85_coding.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_cosmic85_coding.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_coding.txt...Done
 -----------------------------------------------------------------
-NOTICE: Processing operation=f protocol=clinvar_20180603
-NOTICE: Finished reading 5 column headers for '-dbtype clinvar_20180603'
+NOTICE: Processing operation=f protocol=cosmic89_noncoding
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype clinvar_20180603 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4 -otherinfo>
-NOTICE: the --dbtype clinvar_20180603 is assumed to be in generic ANNOVAR database format
-NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_clinvar_20180603_dropped, other variants are written to HG00403.chr20.gatk.hg38_clinvar_20180603_filtered
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype cosmic89_noncoding -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10>
+NOTICE: the --dbtype cosmic89_noncoding is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_cosmic89_noncoding_dropped, other variants are written to HG00403.chr20.gatk.hg38_cosmic89_noncoding_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 12
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 2
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 15
-NOTICE: Database index loaded. Total number of bins is 44007 and the number of bins to be scanned is 26
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_clinvar_20180603.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_cosmic89_noncoding.txt...Done
 -----------------------------------------------------------------
-NOTICE: Processing operation=f protocol=gnomad_genome
-NOTICE: Finished reading 8 column headers for '-dbtype gnomad_genome'
+NOTICE: Processing operation=f protocol=clinvar_20190305
+NOTICE: Finished reading 5 column headers for '-dbtype clinvar_20190305'
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype gnomad_genome -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4 -otherinfo>
-NOTICE: the --dbtype gnomad_genome is assumed to be in generic ANNOVAR database format
-NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_gnomad_genome_dropped, other variants are written to HG00403.chr20.gatk.hg38_gnomad_genome_filtered
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype clinvar_20190305 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
+NOTICE: the --dbtype clinvar_20190305 is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_clinvar_20190305_dropped, other variants are written to HG00403.chr20.gatk.hg38_clinvar_20190305_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 753
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 789
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 776
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
-NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 766
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_gnomad_genome.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 8
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 2
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 21
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 3
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 7
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 12
+NOTICE: Database index loaded. Total number of bins is 46038 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_clinvar_20190305.txt...Done
+-----------------------------------------------------------------
+NOTICE: Processing operation=f protocol=gnomad211_genome
+NOTICE: Finished reading 17 column headers for '-dbtype gnomad211_genome'
+
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype gnomad211_genome -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
+NOTICE: the --dbtype gnomad211_genome is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_gnomad211_genome_dropped, other variants are written to HG00403.chr20.gatk.hg38_gnomad211_genome_filtered
+NOTICE: the queryfile contains 3443 lines
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 309
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 321
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 318
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 297
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 303
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 300
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 315
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 297
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 310
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 28076758 and the number of bins to be scanned is 313
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_genome.txt...Done
+-----------------------------------------------------------------
+NOTICE: Processing operation=f protocol=gnomad211_exome
+NOTICE: Finished reading 17 column headers for '-dbtype gnomad211_exome'
+
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype gnomad211_exome -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
+NOTICE: the --dbtype gnomad211_exome is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_gnomad211_exome_dropped, other variants are written to HG00403.chr20.gatk.hg38_gnomad211_exome_filtered
+NOTICE: the queryfile contains 3443 lines
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 2
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 3
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 3
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 9
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 4
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
+NOTICE: Database index loaded. Total number of bins is 771804 and the number of bins to be scanned is 9
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_gnomad211_exome.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=exac03
 NOTICE: Finished reading 8 column headers for '-dbtype exac03'
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype exac03 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4 -otherinfo>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype exac03 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
 NOTICE: the --dbtype exac03 is assumed to be in generic ANNOVAR database format
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_exac03_dropped, other variants are written to HG00403.chr20.gatk.hg38_exac03_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 0
-NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 7
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 2
 NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 8
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
-NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 15
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_exac03.txt...Done
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 4
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 9
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 3
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 1
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Database index loaded. Total number of bins is 749044 and the number of bins to be scanned is 3
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_exac03.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=intervar_20180118
 NOTICE: Finished reading 29 column headers for '-dbtype intervar_20180118'
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype intervar_20180118 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4 -otherinfo>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype intervar_20180118 -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
 NOTICE: the --dbtype intervar_20180118 is assumed to be in generic ANNOVAR database format
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_intervar_20180118_dropped, other variants are written to HG00403.chr20.gatk.hg38_intervar_20180118_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
-NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 8
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
 NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 0
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
 NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 6
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
-NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 3
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 4
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 1
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 2
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 2
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 2
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Database index loaded. Total number of bins is 535845 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_intervar_20180118.txt...Done
 -----------------------------------------------------------------
 NOTICE: Processing operation=f protocol=dbnsfp31a_interpro
 NOTICE: Finished reading 1 column headers for '-dbtype dbnsfp31a_interpro'
 
-NOTICE: Running system command <annotate_variation.pl -filter -dbtype dbnsfp31a_interpro -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/workshop/ngs_tools/annovar/humandb/ -thread 4 -otherinfo>
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype dbnsfp31a_interpro -buildver hg38 -outfile HG00403.chr20.gatk HG00403.chr20.gatk.avinput /home/philippe/humandb/ -thread 10 -otherinfo>
 NOTICE: the --dbtype dbnsfp31a_interpro is assumed to be in generic ANNOVAR database format
 NOTICE: Variants matching filtering criteria are written to HG00403.chr20.gatk.hg38_dbnsfp31a_interpro_dropped, other variants are written to HG00403.chr20.gatk.hg38_dbnsfp31a_interpro_filtered
 NOTICE: the queryfile contains 3443 lines
-NOTICE: Creating new threads for query line 1 to 861
-NOTICE: Creating new threads for query line 862 to 1722
-NOTICE: Creating new threads for query line 1723 to 2583
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Creating new threads for query line 2584 to 3443
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 861 unique variants in 861 input lines
-NOTICE: Processing next batch with 860 unique variants in 860 input lines
+NOTICE: Creating new threads for query line 1 to 345
+NOTICE: Creating new threads for query line 346 to 690
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 691 to 1035
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1036 to 1380
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1381 to 1725
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 1726 to 2070
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2071 to 2415
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2416 to 2760
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 2761 to 3105
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Creating new threads for query line 3106 to 3443
+NOTICE: Processing next batch with 345 unique variants in 345 input lines
+NOTICE: Processing next batch with 338 unique variants in 338 input lines
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 1
 NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 0
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
-NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 2
-NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 2
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
-NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 4
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
-NOTICE: Scanning filter database /home/workshop/ngs_tools/annovar/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 0
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 1
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 1
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 3
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 1
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Database index loaded. Total number of bins is 275396 and the number of bins to be scanned is 0
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
+NOTICE: Scanning filter database /home/philippe/humandb/hg38_dbnsfp31a_interpro.txt...Done
 -----------------------------------------------------------------
-NOTICE: Multianno output file is written to HG00403.chr20.gatk.hg38_multianno.txt
+NOTICE: Multianno output file is written to HG00403.chr20.gatk.hg38_multianno.csv
 Finished
 ```
 
