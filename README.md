@@ -7,6 +7,8 @@
 * Register URL: https://gew2019.genomics.sinica.edu.tw/
 * Software download
     * URL: http://annovar.openbioinformatics.org/en/latest/
+* Annovar human databases (27GB)
+    * URL: https://drive.google.com/file/d/1a4iErzQoFEkphO9GXR6wz-B8uBCUUvcU/view?usp=sharing
 
 * Raw data
     * gatk.vcf (reference hg38)
