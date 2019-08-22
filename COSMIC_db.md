@@ -1,47 +1,48 @@
 # COSMIC
 
-For annovar db use
+### For annovar db use
 
 ## GRCh38/cosmic/v89/
-### COSMIC mutation data
-Download:
-
+### COSMIC Mutation Data
 * [CosmicMutantExport.tsv.gz](https://cog.sanger.ac.uk/cosmic/GRCh38/cosmic/v89/CosmicMutantExport.tsv.gz)
 
+### COSMIC Non coding variants
 * [CosmicNCV.tsv](https://cog.sanger.ac.uk/cosmic/GRCh38/cosmic/v89/CosmicNCV.tsv)
 
-### Coding and Non-conding mutations
-Download:
-
+### VCF Fils (coding and Non-conding mutations)
 * [CosmicCodingMuts.vcf.gz](https://cog.sanger.ac.uk/cosmic/GRCh38/cosmic/v89/VCF/CosmicCodingMuts.vcf.gz) 
     
 * [CosmicNonCodingVariants.vcf.gz](https://cog.sanger.ac.uk/cosmic/GRCh38/cosmic/v89/VCF/CosmicNonCodingVariants.vcf.gz)
 
 
 ```
-prepare_annovar_user.pl -dbtype cosmic CosmicMutantExport.tsv -vcf CosmicCodingMuts.vcf > hg38_cosmic89_coding.txt
-prepare_annovar_user.pl -dbtype cosmic CosmicNCV.tsv -vcf CosmicNonCodingVariants.vcf > hg38_cosmic89_noncoding.txt
-```
+$prepare_annovar_user_mod.pl -dbtype cosmic CosmicMutantExport.tsv -vcf CosmicCodingMuts.vcf > hg38_cosmic89_coding.txt
 
+NOTICE: Finished reading 4787561 mutation ID from the VCF file CosmicCodingMuts.vcf
+NOTICE: Finished reading 3378630 COSMIC records in DB file CosmicMutantExport.tsv
+WARNING: 14027 COSMIC ID from MutantExport file cannot be found in VCF file (this may be normal if the VCF file only contains coding or noncoding variants
+
+$prepare_annovar_user_mod.pl -dbtype cosmic CosmicNCV.tsv -vcf CosmicNonCodingVariants.vcf > hg38_cosmic89_noncoding.txt
+
+
+
+```
 
 ---
 
 ## GRCh37/cosmic/v89/
 ### COSMIC mutation data
-Download:
-
 * [CosmicMutantExport.tsv.gz](https://cog.sanger.ac.uk/cosmic/GRCh37/cosmic/v89/CosmicMutantExport.tsv.gz)
 
+### COSMIC Non coding variants
 * [CosmicNCV.tsv](https://cog.sanger.ac.uk/cosmic/GRCh37/cosmic/v89/CosmicNCV.tsv)
 
-### Coding and Non-conding mutations
-Download:
-
+### VCF Fils (coding and Non-conding mutations)
 * [CosmicCodingMuts.vcf.gz](https://cog.sanger.ac.uk/cosmic/GRCh37/cosmic/v89/VCF/CosmicCodingMuts.vcf.gz) 
 
 * [CosmicNonCodingVariants.vcf.gz](https://cog.sanger.ac.uk/cosmic/GRCh37/cosmic/v89/VCF/CosmicNonCodingVariants.vcf.gz)
 
 ```
-prepare_annovar_user.pl -dbtype cosmic CosmicMutantExport.tsv -vcf CosmicCodingMuts.vcf > hg19_cosmic89_coding.txt
-prepare_annovar_user.pl -dbtype cosmic CosmicNCV.tsv -vcf CosmicNonCodingVariants.vcf > hg19_cosmic89_noncoding.txt
+prepare_annovar_user_mod.pl -dbtype cosmic CosmicMutantExport.tsv -vcf CosmicCodingMuts.vcf > hg19_cosmic89_coding.txt
+prepare_annovar_user_mod.pl -dbtype cosmic CosmicNCV.tsv -vcf CosmicNonCodingVariants.vcf > hg19_cosmic89_noncoding.txt
 ```
