@@ -17,15 +17,7 @@
 
 ```
 $prepare_annovar_user_mod.pl -dbtype cosmic CosmicMutantExport.tsv -vcf CosmicCodingMuts.vcf > hg38_cosmic89_coding.txt
-
-NOTICE: Finished reading 4787561 mutation ID from the VCF file CosmicCodingMuts.vcf
-NOTICE: Finished reading 3378630 COSMIC records in DB file CosmicMutantExport.tsv
-WARNING: 14027 COSMIC ID from MutantExport file cannot be found in VCF file (this may be normal if the VCF file only contains coding or noncoding variants
-
 $prepare_annovar_user_mod.pl -dbtype cosmic CosmicNCV.tsv -vcf CosmicNonCodingVariants.vcf > hg38_cosmic89_noncoding.txt
-
-
-
 ```
 
 ---
